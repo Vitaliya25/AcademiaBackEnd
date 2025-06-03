@@ -1,9 +1,24 @@
+/**
+ * Implementación del servicio AlumnoService
+ *
+ * Esta clase gestiona la lógica de negocio relacionada con los alumnos,
+ * usando AlumnoRepository para acceder y manipular los datos.
+ *
+ * Funciones principales:
+ * - obtenerTodos(): devuelve todos los alumnos.
+ * - obtenerPorId(Long id): obtiene un alumno por su ID.
+ * - guardar(Alumno alumno): crea o actualiza un alumno.
+ * - eliminar(Long id): elimina un alumno dado su ID.
+ * - findByNombreContainingIgnoreCase(String nombre): busca alumnos por nombre (ignorando mayúsculas).
+ * - findByNombreContainingIgnoreCaseOrApellidoContainingIgnoreCase(String nombre, String apellido): busca alumnos por nombre o apellido.
+ * - findByCursoContainingIgnoreCase(String curso): busca alumnos por curso.
+ * */
+
 package com.academia.academia.service;
 
 import com.academia.academia.entity.Alumno;
 import com.academia.academia.repository.AlumnoRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -53,5 +68,4 @@ public class AlumnoServiceImp implements AlumnoService {
     public List<Alumno> findByCursoContainingIgnoreCase(String curso) {
         return alumnoRepository.findByCursoContainingIgnoreCase(curso);
     }
-
 }

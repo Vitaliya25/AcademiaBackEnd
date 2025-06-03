@@ -1,5 +1,17 @@
-package com.academia.academia.service;
+/**
+ * Implementación del servicio ClaseService
+ *
+ * Esta clase maneja la lógica de negocio relacionada con las clases,
+ * utilizando ClaseRepository para acceder y manipular los datos.
+ *
+ * Funciones principales:
+ * - getAllClases(): devuelve todas las clases disponibles.
+ * - getClaseById(Long id): obtiene una clase por su ID.
+ * - saveClase(Clase clase): crea o actualiza una clase.
+ * - deleteClase(Long id): elimina una clase dado su ID.
+ * */
 
+package com.academia.academia.service;
 
 import com.academia.academia.entity.Clase;
 import com.academia.academia.repository.ClaseRepository;

@@ -1,3 +1,19 @@
+/**
+ * Clase principal de la aplicación Spring Boot.
+ *
+ * Esta clase se encarga de inicializar el contexto de Spring y de cargar datos
+ * iniciales para las entidades Alumno, Profesor, Clase, Horario, Usuario y Pago.
+ *
+ * Funciones principales:
+ * - Inicializar el contexto de Spring Boot.
+ * - Obtener los repositorios desde el contexto para realizar operaciones CRUD.
+ * - Crear listas de datos iniciales para cada entidad.
+ * - Establecer relaciones entre entidades (e.g. horarios con clases, clases con profesores).
+ * - Guardar todos los datos iniciales en la base de datos.
+ * - Insertar un usuario administrador por defecto.
+ * - Mostrar un mensaje confirmando la carga exitosa de los datos.
+ */
+
 package com.academia.academia;
 
 import com.academia.academia.entity.*;
@@ -5,7 +21,6 @@ import com.academia.academia.repository.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -23,7 +38,6 @@ public class App {
 		HorarioRepository horarioRepository = context.getBean(HorarioRepository.class);
 		UserRepository userRepository = context.getBean(UserRepository.class);
 		PagoRepository pagoRepository = context.getBean(PagoRepository.class);
-
 
 		List<Alumno> alumnos = crearAlumnos();
 		alumnoRepository.saveAll(alumnos);
@@ -79,7 +93,6 @@ public class App {
 		}
 
 		pagoRepository.saveAll(pagos);
-
 
 		List<Usuario> usuarios = List.of(
 				new Usuario("admin", "123456", "admin@gmail.com")
@@ -146,17 +159,6 @@ public class App {
 		);
 	}
 
-//	private static List<Horario> crearHorarios() {
-//		return List.of(
-//				new Horario(DiaSemana.LUNES, LocalTime.of(9, 0), LocalTime.of(10, 0)),
-//				new Horario(DiaSemana.MARTES, LocalTime.of(10, 0), LocalTime.of(11, 0)),
-//				new Horario(DiaSemana.MIERCOLES, LocalTime.of(11, 0), LocalTime.of(12, 0)),
-//				new Horario(DiaSemana.JUEVES, LocalTime.of(9, 0), LocalTime.of(10, 0)),
-//				new Horario(DiaSemana.VIERNES, LocalTime.of(10, 0), LocalTime.of(11, 0)),
-//				new Horario(DiaSemana.LUNES, LocalTime.of(13, 0), LocalTime.of(14, 0))
-//		);
-//	}
-
 	private static List<Horario> crearHorarios() {
 		return List.of(
 				new Horario(DiaSemana.LUNES, LocalTime.of(9, 0), LocalTime.of(10, 0)),    // Matemáticas 1º Secundaria
@@ -172,8 +174,6 @@ public class App {
 				new Horario(DiaSemana.LUNES, LocalTime.of(18, 0), LocalTime.of(19, 0))   // Inglés 1º Bachiller
 		);
 	}
-
-
 
 	private static void asignarClasesAProfesores(List<Profesor> profesores, List<Clase> clases) {
 		clases.get(0).setProfesor(profesores.get(0));

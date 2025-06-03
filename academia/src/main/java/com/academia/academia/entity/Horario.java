@@ -1,3 +1,11 @@
+/**
+ * Clase Horario
+ * Representa entidad Horario en el que se imparte una clase dentro del sistema académico.
+ * Incluye el día de la semana, la hora de inicio y fin, y la relación con la entidad Clase.
+ * Está relacionada con Clase mediante una relación @ManyToOne, una clase puede
+ * tener varios horarios asignados.
+ */
+
 package com.academia.academia.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

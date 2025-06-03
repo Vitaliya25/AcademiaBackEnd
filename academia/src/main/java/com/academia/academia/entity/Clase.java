@@ -1,10 +1,20 @@
+/**
+ * Clase Clase
+ * Representa la entidad Clase en el sistema de gestión académica.
+ * Contiene los atributos de una clase como asignatura y curso, y define
+ * las relaciones:
+ * - Muchos a Uno con la entidad Profesor (cada clase tiene un profesor).
+ * - Uno a Muchos con la entidad Horario (una clase puede tener varios horarios).
+ * - Uno a Muchos con la entidad Alumno (una clase puede tener varios alumnos).
+ * También tiene un campo transitorio `profesorId` para facilitar la comunicación
+ * con el frontend sin incluir el objeto completo del profesor.
+ */
+
 package com.academia.academia.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,6 +108,4 @@ public class Clase {
     public void setCurso(String curso) {
         this.curso = curso;
     }
-
-
 }

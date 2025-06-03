@@ -1,5 +1,18 @@
-package com.academia.academia.entity;
+/**
+ * Clase Alumno
+ * Esta clase representa la entidad Alumno en la base de datos.
+ * Contiene atributos básicos como nombre, apellido, edad, curso, teléfono y email, así como
+ * una relación Many-to-One con la entidad Clase.
+ * Se usa en el contexto de una aplicación de gestión académica para almacenar y manipular
+ * la información de los estudiantes.
+ * Incluye:
+ * - Anotaciones JPA para definir el mapeo con la base de datos.
+ * - Constructor vacío requerido por JPA.
+ * - Constructor con parámetros para facilitar la creación de objetos.
+ * - Getters y Setters para acceder y modificar los atributos.
+ */
 
+package com.academia.academia.entity;
 import jakarta.persistence.*;
 
 @Entity

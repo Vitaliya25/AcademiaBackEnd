@@ -1,3 +1,19 @@
+/**
+ * Implementación del servicio ProfesorService
+ *
+ * Esta clase gestiona la lógica de negocio relacionada con los profesores,
+ * utilizando ProfesorRepository y ClaseRepository para acceder y manipular datos
+ * de profesores y clases respectivamente.
+ *
+ * Métodos principales:
+ * - obtenerTodos(): devuelve la lista completa de profesores.
+ * - obtenerPorId(Long id): obtiene un profesor por su ID.
+ * - guardarProfesor(Profesor profesor): crea o actualiza un profesor.
+ * - eliminarProfesor(Long id): elimina un profesor por su ID.
+ * - findByNombreContainingIgnoreCaseOrApellidoContainingIgnoreCase(String nombre, String apellido):
+ *      busca profesores por nombre o apellido (sin importar mayúsculas).
+ * - asignarClase(Long idProfesor, Long idClase): asigna una clase a un profesor y actualiza ambas entidades.
+ * */
 package com.academia.academia.service;
 
 import com.academia.academia.entity.Clase;
@@ -5,7 +21,6 @@ import com.academia.academia.entity.Profesor;
 import com.academia.academia.repository.ClaseRepository;
 import com.academia.academia.repository.ProfesorRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

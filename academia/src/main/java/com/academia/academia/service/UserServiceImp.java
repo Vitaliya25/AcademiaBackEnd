@@ -1,9 +1,22 @@
+/**
+ * Implementación del servicio UserService
+ *
+ * Esta clase gestiona la lógica de negocio relacionada con los usuarios,
+ * utilizando UserRepository para acceder a la base de datos.
+ *
+ * Métodos principales:
+ * - obtenerTodos(): devuelve la lista completa de usuarios.
+ * - obtenerPorId(Long id): obtiene un usuario por su ID.
+ * - guardar(Usuario usuario): crea o actualiza un usuario.
+ * - eliminar(Long id): elimina un usuario por su ID.
+ * - obtenerPorUsername(String username): busca un usuario por su nombre de usuario.
+ * - obtenerPorEmail(String email): busca un usuario por su correo electrónico.
+ * */
 package com.academia.academia.service;
 
 import com.academia.academia.entity.Usuario;
 import com.academia.academia.repository.UserRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -1,3 +1,13 @@
+/**
+ * Clase Profesor
+ * Representa a entidad Profesor dentro del sistema académico.
+ * Contiene información personal como nombre, apellido, teléfono y correo electrónico.
+ * Está relacionada con la entidad Clase mediante una relación @OneToMany,
+ * lo que indica que un profesor puede estar asociado a múltiples clases.
+ * La anotación @JsonIgnoreProperties se usa para evitar referencias cíclicas
+ * durante la serialización JSON entre Profesor y Clase.
+ */
+
 package com.academia.academia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

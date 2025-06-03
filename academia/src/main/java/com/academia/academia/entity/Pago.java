@@ -1,8 +1,17 @@
+/**
+ * Clase Pago
+ * Representa entidad Pago realizado por un alumno en el sistema académico.
+ * Incluye la fecha correspondiente a la mensualidad, el monto pagado y la fecha del pago.
+ * Está relacionada con la entidad Alumno mediante una relación @ManyToOne,
+ * lo que indica que un alumno puede tener múltiples pagos asociados.
+ * La propiedad `fechaMensualidad` permite llevar control de a qué mes corresponde el pago,
+ * mientras que `fechaPago` almacena cuándo se efectuó el pago realmente.
+ */
+
 package com.academia.academia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity

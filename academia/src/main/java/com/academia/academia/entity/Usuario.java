@@ -1,3 +1,10 @@
+/**
+ * Clase Usuario
+ * Representa a entidad Usuario del sistema, utilizado para autenticación y gestión de acceso.
+ * Contiene campos básicos como nombre de usuario (username), contraseña (password) y correo electrónico (email).
+ * Esta clase puede ser utilizada para gestionar inicios de sesión y autorizaciones para diferentes usuarios.
+ */
+
 package com.academia.academia.entity;
 
 import jakarta.persistence.*;
