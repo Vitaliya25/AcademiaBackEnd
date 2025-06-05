@@ -75,60 +75,6 @@ public class ClaseController {
         }
     }
 
-//@PutMapping("/{id}")
-//public ResponseEntity<Clase> updateClase(@PathVariable Long id, @RequestBody Clase clase) {
-//    Optional<Clase> existingClaseOpt = claseService.getClaseById(id);
-//    if (existingClaseOpt.isEmpty()) {
-//        return ResponseEntity.notFound().build();
-//    }
-//
-//    Clase claseExistente = existingClaseOpt.get();
-//
-//    // Actualizar datos básicos
-//    claseExistente.setAsignatura(clase.getAsignatura());
-//    claseExistente.setCurso(clase.getCurso());
-//    claseExistente.setProfesor(clase.getProfesor());
-//
-//    // Crear mapa de horarios actuales por ID
-//    Map<Long, Horario> horariosActuales = claseExistente.getHorarios().stream()
-//            .filter(h -> h.getId() != null)
-//            .collect(Collectors.toMap(Horario::getId, h -> h));
-//
-//    List<Horario> nuevosHorarios = new ArrayList<>();
-//
-//    for (Horario h : clase.getHorarios()) {
-//        if (h.getId() != null && horariosActuales.containsKey(h.getId())) {
-//            // Actualizar horario existente
-//            Horario existente = horariosActuales.get(h.getId());
-//            existente.setDia(h.getDia());
-//            existente.setHoraInicio(h.getHoraInicio());
-//            existente.setHoraFin(h.getHoraFin());
-//            nuevosHorarios.add(existente);
-//            horariosActuales.remove(h.getId());
-//        } else {
-//            // Nuevo horario
-//            h.setClase(claseExistente); // vincular a la clase actual
-//            nuevosHorarios.add(h);
-//        }
-//    }
-//
-//    // Eliminar horarios que ya no están
-//    for (Horario eliminado : horariosActuales.values()) {
-//        eliminado.setClase(null); // desvincular
-//    }
-//    claseExistente.getHorarios().removeIf(h -> horariosActuales.containsKey(h.getId()));
-//
-//    // Agregar/actualizar nuevos horarios
-//    for (Horario nuevo : nuevosHorarios) {
-//        if (!claseExistente.getHorarios().contains(nuevo)) {
-//            claseExistente.getHorarios().add(nuevo);
-//        }
-//    }
-//
-//    Clase actualizada = claseService.saveClase(claseExistente);
-//    return ResponseEntity.ok(actualizada);
-//}
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteClase(@PathVariable Long id) {
         claseService.deleteClase(id);

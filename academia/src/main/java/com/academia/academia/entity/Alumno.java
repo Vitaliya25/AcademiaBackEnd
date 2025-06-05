@@ -34,8 +34,9 @@ public class Alumno {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "clase_id")
+    @JoinColumn(name = "clase_id", nullable = true)
     private Clase clase;
+
 
     public Alumno() {
     }
