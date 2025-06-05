@@ -3,7 +3,9 @@ package com.academia.academia.controller;
 import com.academia.academia.entity.Alumno;
 import com.academia.academia.entity.Clase;
 import com.academia.academia.entity.Horario;
+import com.academia.academia.entity.Profesor;
 import com.academia.academia.service.ClaseService;
+import com.academia.academia.service.ProfesorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,9 +20,16 @@ import java.util.stream.Collectors;
 public class ClaseController {
 
     private final ClaseService claseService;
+    private final ProfesorService profesorService;
 
-    public ClaseController(ClaseService claseService) {
+
+//    public ClaseController(ClaseService claseService) {
+//        this.claseService = claseService;
+//    }
+
+    public ClaseController(ClaseService claseService, ProfesorService profesorService) {
         this.claseService = claseService;
+        this.profesorService = profesorService;
     }
 
     @GetMapping
@@ -35,13 +44,14 @@ public class ClaseController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-//    @PostMapping
-//    public Clase createClase(@RequestBody Clase clase) {
-//        return claseService.saveClase(clase);
-//    }
 
     @PostMapping
     public Clase createClase(@RequestBody Clase clase) {
+        if (clase.getProfesorId() != null) {
+            Profesor profesor = profesorService.obtenerPorId(clase.getProfesorId())
+                    .orElseThrow(() -> new RuntimeException("Profesor no encontrado con id " + clase.getProfesorId()));
+            clase.setProfesor(profesor);
+        }
         // Asegura que cada horario tenga la referencia a esta clase
         for (Horario horario : clase.getHorarios()) {
             horario.setClase(clase);
@@ -58,7 +68,14 @@ public class ClaseController {
             Clase claseActualizado =existingClase.get();
             claseActualizado.setAsignatura(clase.getAsignatura());
             claseActualizado.setCurso(clase.getCurso());
-            claseActualizado.setProfesor(clase.getProfesor());
+
+            if (clase.getProfesorId() != null) {
+                Profesor profesor = profesorService.obtenerPorId(clase.getProfesorId())
+                        .orElseThrow(() -> new RuntimeException("Profesor no encontrado con id " + clase.getProfesorId()));
+                claseActualizado.setProfesor(profesor);
+            }
+
+//            claseActualizado.setProfesor(clase.getProfesor());
 
 
             claseActualizado.getHorarios().clear();
@@ -66,7 +83,6 @@ public class ClaseController {
                 horario.setClase(claseActualizado);
             }
             claseActualizado.getHorarios().addAll(clase.getHorarios());
-
 
             this.claseService.saveClase(claseActualizado);
             return ResponseEntity.ok(claseActualizado);
