@@ -108,4 +108,13 @@ public class Clase {
     public void setCurso(String curso) {
         this.curso = curso;
     }
+
+    public void setProfesorId(Long profesorId) {
+        if (this.profesor == null) {
+            this.profesor = new Profesor();
+        }
+        this.profesor.setId(profesorId);
+    }
+
+
 }
